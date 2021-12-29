@@ -18,8 +18,8 @@ library(showtext)
 library(ggtext)
 
 ```
-
-# Import and prepare data from Runkeeper 
+# If your data is in Runkeeper...
+## Import and prepare data from Runkeeper 
 ```{r Runkeeper Import}
 # Directory containing gpx files exported from Runkeeper (https://runkeeper.com/exportData)
 gpx_dir <- "01-runkeeper-data-export-2021-12-21-011508"
@@ -40,9 +40,10 @@ data_clean <- data_raw %>% filter(Year == year & Type == activity) %>%
 
 ```
 
-# Import and prepare data from Strava
+# Or if your data is in Strava...
+## Import and prepare data from Strava - this uses a static export.  For a more elegant solution, see https://rviews.rstudio.com/2021/11/22/strava-data/
 ```{r Strava Import}
-export_dir <- here::here("rj")
+export_dir <- here::here("sml")
 
 # Strava exported data is organized differently than Runkeeper. The exported folder structure looks something like this:
 # export_70092700/
@@ -114,7 +115,7 @@ caption <- "500 miles \U2022 2021"
 
 font_add_google("Monoton")
 font_add("fa-solid", "~/Downloads/fontawesome-free-5.15.4-desktop/otfs/Font Awesome 5 Free-Solid-900.otf")
-# ^- this is a lousy way of doing this
+# ^- this is a lousy way of doing this but needed fa-solid for runner icon. Download source: https://fontawesome.com/download. 
 showtext_auto()
 
 # plot it
